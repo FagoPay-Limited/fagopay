@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/*
+Theme Name: Cyberbank
+Theme URI: https://cyberbank.cmsmasters.net/
+Author: cmsmasters
+Author URI: https://cmsmasters.net/
+Description: Cyberbank theme is the first theme with social media integration like never before. Even if you have never done this, you will be able to setup a ready professional-quality website with a hub for all your social media accounts and award-winning design.
+Version: 1.0.0
+License:
+License URI:
+Text Domain: cyberbank
+Domain Path: /theme-config/languages
+Tags: one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+*/
+
+
+.sticky,
+.bypostauthor,
+.screen-reader-text {
+  outline: none;
+}

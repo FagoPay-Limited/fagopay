@@ -1,0 +1,105 @@
+.elementor-245 .elementor-element.elementor-element-be5dc1a {
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 90px 0px 100px 0px;
+}
+
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 1140px;
+}
+.elementor-widget-wrap {
+  position: relative;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+}
+.elementor-245 .elementor-element.elementor-element-e7572de {
+  padding: 0px 0px 90px 0px;
+}
+.elementor-widget-wrap>.elementor-element {
+  width: 100%;
+}
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 1140px;
+}
+.elementor-column-gap-extended>.elementor-column>.elementor-element-populated {
+  padding: 15px;
+}
+.style-1 .ot-acc-item {
+  border-bottom: 1px solid rgba(34,51,84,.1);
+}
+.ot-acc-item {
+  background: #fff;
+}
+.ot-acc-item__title {
+  flex-grow: 1;
+}
+.ot-acc-item__title {
+  cursor: pointer;
+  justify-content: space-between;
+  overflow: hidden;
+  font-weight: 500;
+  color: #223354;
+  padding: 17px 0 22px;
+  margin-bottom: 0;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+}
+.flex-middle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* -webkit-box-align: center; */
+    -ms-flex-align: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.ot-acc-item__title svg {
+  display: block;
+  width: 20px;
+  fill: #223354;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+}
+.ot-acc-item__content {
+  display: none;
+  padding-bottom: 30px;
+}
+
+
+
+
+
+@media (min-width: 768px){
+.elementor .elementor-section.elementor-section-boxed>.elementor-container {
+    max-width: 750px;
+}
+.elementor-column.elementor-col-100, .elementor-column[data-col="100"] {
+  width: 100%;
+}
+.elementor .elementor-section.elementor-section-boxed>.elementor-container {
+  max-width: 750px;
+}
+
+
+}
+
+@media (max-width: 1024px)
+{
+  .elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 1024px;
+}
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 1024px;
+}
+
+
+
+}
