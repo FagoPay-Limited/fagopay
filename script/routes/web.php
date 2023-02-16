@@ -4,7 +4,7 @@ use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-//Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::group(['as' => 'frontend.', 'namespace' => 'App\Http\Controllers\Frontend'], function (){
     Route::get('/', 'HomeController@index')->name('home.index');
