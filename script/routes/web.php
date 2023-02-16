@@ -107,7 +107,12 @@ Route::group(['prefix' => 'cron', 'as' => 'cron.'], function (){
 
 
 
-//Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['auth', 'admin']], function () {
+
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('dashboard', function(){
+        abort(404);
+    })->name('dashboard.index');
+
 //    // Website
 //    Route::post('customers/send-email/{user}', 'CustomerController@sendEmail')->name('customers.send-email');
 //    Route::resource('customers', 'CustomerController')->except('create', 'store');
@@ -316,5 +321,5 @@ Route::group(['prefix' => 'cron', 'as' => 'cron.'], function (){
 //    Route::post('/site-settings-update/{type}', 'SitesettingsController@update')->name('site-settings.update');
 //    Route::resource('cron', 'CronController');
 //
-//});
+});
 
