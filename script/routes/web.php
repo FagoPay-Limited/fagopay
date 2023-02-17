@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Auth;
 //Auth::routes(['verify' => true]);
 
 Route::get('/login', function (){
-    return redirect()->away("https://fargopayuser.herokuapp.com");
+    return redirect()->away("https://fagopayuser.herokuapp.com");
 })->name('login');
 
 Route::get('/register', function (){
-    return redirect()->away("https://fargopayuser.herokuapp.com/register");
+    return redirect()->away("https://fagopayuser.herokuapp.com/register");
 })->name('register');
 
 Route::group(['as' => 'frontend.', 'namespace' => 'App\Http\Controllers\Frontend'], function (){
