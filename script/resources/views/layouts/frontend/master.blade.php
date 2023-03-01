@@ -11,7 +11,7 @@
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
-   
+   @stack('style')
     
 
 
