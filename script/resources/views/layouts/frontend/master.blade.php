@@ -53,6 +53,7 @@ $(document).ready(function(){
   
     @yield('css')
     @stack('css')
+    @stack('style')
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('frontend/style.css') }}">
