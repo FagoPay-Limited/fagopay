@@ -51,15 +51,15 @@ class RegisterController extends Controller
     // NEW REGiSTER FUNCTIONS \\
     public function step1(Request $request)
     {
-    
+
       session()->put('step1', $request->type);
       $step1 = session()->get('step1');
       //session()->forget('step1');
       if($request->session()->has('step1'))
       {
         return  redirect()->route('auth.register.step2');
-      } 
-      // return redirect()->back()->with('error', 'Invalid Process'); 
+      }
+      // return redirect()->back()->with('error', 'Invalid Process');
       return redirect()->route('register')->with('error', 'Invalid Process');
     }
 
@@ -68,10 +68,10 @@ class RegisterController extends Controller
         if(!$request->session()->has('step1'))
         {
             return redirect()->route('register')->with('error', 'Invalid Process');
-        } 
+        }
         //return session()->get('step2type');
-        
-            
+
+
         if($request->type)
         {
             $email = $request->value;
@@ -80,13 +80,13 @@ class RegisterController extends Controller
             $phoneexist = User::wherePhone($phone)->first();
             if($emailexist)
             {
-                return redirect()->back()->with('error', 'There is an existing customer with the email');   
+                return redirect()->back()->with('error', 'There is an existing customer with the email');
             }
             if($phoneexist)
             {
-                return redirect()->back()->with('error', 'There is an existing customer with the phone');   
+                return redirect()->back()->with('error', 'There is an existing customer with the phone');
             }
-            
+
             session()->put('step2type', $request->type);
             session()->put('step2value', $request->value);
             session()->put('step3otp', rand(343434,895843));
@@ -120,13 +120,13 @@ class RegisterController extends Controller
         if(!$request->session()->has('step2type'))
         {
             return redirect()->route('register')->with('error', 'Invalid Process');
-        } 
+        }
         if($request->f6)
         {
             $code =  $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
             if(session()->get('step3otp') != $code)
             {
-                return redirect()->back()->with('error', 'Invalid OTP Code, please check and try again'); 
+                return redirect()->back()->with('error', 'Invalid OTP Code, please check and try again');
             }
             else
             {
@@ -142,7 +142,7 @@ class RegisterController extends Controller
         if(!$request->session()->has('step3otpsuccess'))
         {
             return redirect()->route('register')->with('error', 'Invalid OTP Process');
-        } 
+        }
         if($request->lastname)
         {
             //return session()->get('step2type');
@@ -170,17 +170,17 @@ class RegisterController extends Controller
             $phoneexist = User::wherePhone($phone)->first();
             if($emailexist)
             {
-                return redirect()->back()->with('error', 'There is an existing customer with the email');   
+                return redirect()->back()->with('error', 'There is an existing customer with the email');
             }
             if($phoneexist)
             {
-                return redirect()->back()->with('error', 'There is an existing customer with the phone');   
+                return redirect()->back()->with('error', 'There is an existing customer with the phone');
             }
 
             return  redirect()->route('auth.register.step5');
         }
         return view('auth.step4');
-       
+
     }
 
     public function step5(Request $request)
@@ -188,12 +188,12 @@ class RegisterController extends Controller
         if(!$request->session()->has('lastname'))
         {
             return redirect()->route('register')->with('error', 'Invalid OTP Process');
-        } 
+        }
         if($request->password)
         {
             if($request->password != $request->confirmpassword)
             {
-                return redirect()->back()->with('error', 'Password does not match'); 
+                return redirect()->back()->with('error', 'Password does not match');
             }
             //return session()->get('step1');
             if (session()->get('step1')=="2") {
@@ -227,7 +227,7 @@ class RegisterController extends Controller
            // return redirect()->route('auth.register.step6');
         }
         return view('auth.step5');
-       
+
     }
 
     /**
@@ -251,7 +251,7 @@ class RegisterController extends Controller
             'agree.accepted' => __('You have to agree with our terms & conditions')
         ]);
     }
-    
+
     else{
         return Validator::make($data, [
             'namee' => ['required', 'string', 'max:255'],
@@ -263,7 +263,7 @@ class RegisterController extends Controller
             'agree.accepted' => __('You have to agree with our terms & conditions')
         ]);
     }
-    
+
     }
 
     /**
@@ -273,7 +273,7 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {  
+    {
         if ($data['type']=="2") {
         return User::create([
             'name' => $data['name'],
@@ -296,7 +296,7 @@ class RegisterController extends Controller
             'currency_id' => $data['country']
         ]);
     }
-    
+
     }
 
     public function register(Request $request)
