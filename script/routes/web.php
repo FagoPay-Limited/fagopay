@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['verify' => true]);
 
+Route::group(['as' => 'auth.', 'namespace' => 'App\Http\Controllers\Auth'], function (){
+    Route::post('/register-step1', 'RegisterController@step1')->name('register.step1');
+    Route::any('/register-step2', 'RegisterController@step2')->name('register.step2');
+    Route::any('/register-step3', 'RegisterController@step3')->name('register.step3');
+    Route::any('/register-step4', 'RegisterController@step4')->name('register.step4');
+    Route::any('/register-step5', 'RegisterController@step5')->name('register.step5');
+});
+
 Route::get('/', function (){
     return redirect()->route('login');
 })->name('home.index');
