@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 //Without verified
-Route::group(['prefix' => 'user','as' => 'user.','namespace' => 'App\Http\Controllers\User','middleware' => ['auth', 'user']], function () {
+Route::group(['as' => 'user.','namespace' => 'App\Http\Controllers\User','middleware' => ['auth', 'user']], function () {
     Route::get('set-bank', 'ConfigureBankAccountController@index')->withoutMiddleware('hasBank')->name('set-bank.index');
     Route::post('set-bank/store', 'ConfigureBankAccountController@store')->withoutMiddleware('hasBank')->name('set-bank.store');
     Route::post('email-validateee', 'ConfigureBankAccountController@checkEmaill')->name('checkEmaill');
@@ -19,13 +19,12 @@ Route::group(['prefix' => 'user','as' => 'user.','namespace' => 'App\Http\Contro
 
 
 Route::group([
-    'prefix' => 'user',
     'as' => 'user.',
     'namespace' => 'App\Http\Controllers\User',
     'middleware' => ['auth', 'verified', 'user', 'hasBank', 'kyc']
 ], function () {
     Route::get('home', 'DashboardController@index')->name('home.index');
-    
+
     // BILLS
     Route::get('bills/bulk/vpin', 'BillsController@VPin')->name('bills.vpin');
     Route::post('bills/bulk/vpin', 'BillsController@VPinPost');
@@ -37,9 +36,9 @@ Route::group([
     Route::post('email-validatee', 'BillsController@checkEmailtv')->name('checkEmailtv');
     Route::get('bills/swap/airtime/preview', 'BillsController@SwapAirtimePreview')->name('bills.swapairtime.preview');
     Route::post('bills/swap/airtime/preview', 'BillsController@airtimeswapcomplete');
-    
-    
-    
+
+
+
             Route::get('bill/airtime', 'BillsController@airtime')->name('airtime');
             Route::post('bill/airtime', 'BillsController@airtimebuy')->name('airtimebuy');
             Route::get('bill/internet', 'BillsController@internet')->name('internet');
@@ -60,12 +59,12 @@ Route::group([
             Route::get('vpin', 'BillsController@vpin')->name('vpin');
             Route::get('vpin/{id}', 'BillsController@vpinview')->name('vpinview');
             Route::post('vpin', 'BillsController@vpinprint');
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     // Money request
     Route::get('request-money/cancle/{id}', 'RequestMoneyController@cancle')->name('request-money.cancel');
     Route::get('request-money/approved/{id}', 'RequestMoneyController@approved')->name('request-money.approved');
