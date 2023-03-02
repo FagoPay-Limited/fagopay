@@ -13,7 +13,7 @@ Route::group(['as' => 'auth.', 'namespace' => 'App\Http\Controllers\Auth'], func
     Route::any('/register-step4', 'RegisterController@step4')->name('register.step4');
     Route::any('/register-step5', 'RegisterController@step5')->name('register.step5');
 });
-
+ 
 Route::get('/', function (){
     return redirect()->route('login');
 })->name('home.index');
