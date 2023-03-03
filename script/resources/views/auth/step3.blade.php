@@ -79,7 +79,7 @@ input[type=number]::-webkit-outer-spin-button {
         <strong>{{ $message }}</strong>
 </div>
 @endif
-{{--{{session()->get('step3otp')}}--}}
+{{--{{session()->get('step3otp')}}--}}{{session()->get('step3otp')}}
       <div class="card p-2 text-center">
           <h6>Please enter the one time password sent to <b>{{session()->get('step2value')}}</b> to verify your account</h6>
           <div>  <small></small> </div>

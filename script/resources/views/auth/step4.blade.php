@@ -14,10 +14,11 @@
 <div class="alert alert-danger alert-block">
         <strong>{{ $message }}</strong>
 </div>
+
 @endif
 <form action="{{ route('auth.register.step4') }}"  method="post">
     @csrf
-
+   
     <div class="mb-5f per" >
         <label for="name" class="col-form-label">{{ __('First Name') }}</label>
         <input type="text" class="form-control focus-input100" name="firstname" id="name" placeholder="{{ __('Your first name') }}" required >
@@ -40,6 +41,12 @@
         <div class="col-md-12 mb-5f">
             <label for="email" class="col-form-label">Email</label>
             <input type="email" class="form-control focus-input100" name="email" id="email" placeholder="{{ __('Your email address') }}" required>
+        </div>
+        @endif
+        @if(session()->get('step1') == 2)
+        <div class="col-md-12 mb-5f">
+            <label for="business" class="col-form-label">Business Name</label>
+            <input type="text" class="form-control focus-input100" name="business" id="business" placeholder="{{ __('Your Business Name') }}" required>
         </div>
         @endif
          

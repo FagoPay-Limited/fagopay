@@ -39,6 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'qr',
         'password',
         'ip_address',
+        'email_verified_at',
         'last_login_at',
         'kyc_verified_at'
     ];

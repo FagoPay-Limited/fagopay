@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Providers\RouteServiceProvider;
@@ -121,9 +121,11 @@ class RegisterController extends Controller
         {
             return redirect()->route('register')->with('error', 'Invalid Process');
         }
-        if($request->f6)
+      //return  $request->f6;
+      $code =  $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
+        if($code)
         {
-            $code =  $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
+            
             if(session()->get('step3otp') != $code)
             {
                 return redirect()->back()->with('error', 'Invalid OTP Code, please check and try again');
@@ -164,6 +166,10 @@ class RegisterController extends Controller
             }
             session()->put('firstname', $request->firstname);
             session()->put('lastname', $request->lastname);
+            if($request->business != null)
+            {
+              session()->put('business', $request->business);
+            }
             session()->put('email', $email);
             session()->put('phone', $phone);
             $emailexist = User::whereEmail($email)->first();
@@ -204,9 +210,10 @@ class RegisterController extends Controller
                     'username' => $this->usernameGenerate(session()->get('email')),
                     'password' => Hash::make($request->password),
                     //'currency_id' => $data['country'],
+                    'email_verified_at' => Carbon::now(),
                     'currency_id' => 5,
                     'meta' => [
-                        "business_name" => null
+                        "business_name" =>  session()->get('business')
                     ]
                 ]);
             }
@@ -217,6 +224,7 @@ class RegisterController extends Controller
                     'phone' => session()->get('phone'),
                     'username' => $this->usernameGenerate(session()->get('email')),
                     'password' => Hash::make($request->password),
+                    'email_verified_at' => Carbon::now(),
                      //'currency_id' => $data['country']
                      'currency_id' => 5
                 ]);
