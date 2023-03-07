@@ -13,6 +13,8 @@
     <link href="{{url('/')}}/user/dashboard/web/css/style2.css" rel="stylesheet" id="style" >
     <link rel="stylesheet" href="{{url('/')}}/user/dashboard/web/css/bootstrap-icons.css">
     <link href="{{url('/')}}/user/fonts/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+
+    @stack('style')
      <style>
      
      
@@ -330,5 +332,6 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 
     <!-- page level custom script -->
     <script src="{{url('/')}}/user/dashboard/web/js/app.js"></script>
+    @stack('script')
 </body>
 </html>

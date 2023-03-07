@@ -12,9 +12,24 @@ use App\Models\Transaction;
 use App\Models\SingleCharge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class DashboardController extends Controller
 {
+
+
+    public function verifybvn(Request $request)
+    {
+        $bvn = null; 
+        return view('user.verifyme.kyc', compact('bvn'));
+    }
+    public function requestbvn(Request $request)
+    {
+        $bvn = $request->bvn;
+        //$step1 = session()->get('step1');
+        return view('user.verifyme.kyc', compact('bvn'));
+    }
+
     public function index()
     {
         $transactions = Transaction::whereUserId(auth()->id())->where('amount', '>', 0)->latest()->paginate();

@@ -36,7 +36,15 @@
 }
 </style>
     <div class="row">
+        @if(Auth::user()->kyc_verified_at == null)
+        @include('user.verifyme.notification')
+        @endif
+        @if(Auth::user()->kyc_verified_at != null)
+
+
         <div class="col-md-8">
+
+
             
          
         <div data-v-7f28cfc2="" class="card-body">
@@ -351,6 +359,7 @@
 
     @include('user.home.charts.qr-payments')
    </div>
+   @endif
     <input type="hidden" id="qrUrl" value="{{ route('frontend.qr.index', auth()->user()->qr) }}">
     
     

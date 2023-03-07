@@ -21,8 +21,16 @@ Route::group(['as' => 'user.','namespace' => 'App\Http\Controllers\User','middle
 Route::group([
     'as' => 'user.',
     'namespace' => 'App\Http\Controllers\User',
-    'middleware' => ['auth', 'verified', 'user', 'hasBank', 'kyc']
+    // 'middleware' => ['auth', 'verified', 'user', 'hasBank', 'kyc']
+    'middleware' => ['auth', 'verified', 'user', 'kyc']
 ], function () {
+
+
+    // VERIFY REQUESTS //
+    Route::get('verify/bvn', 'DashboardController@verifybvn')->name('verify.bvn');
+    Route::post('request/bvn', 'DashboardController@requestbvn')->name('request.bvn');
+    Route::get('verify/business', 'DashboardController@verifybusiness')->name('verify.business');
+
     Route::get('home', 'DashboardController@index')->name('home.index');
 
     // BILLS
