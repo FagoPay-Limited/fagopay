@@ -10,6 +10,7 @@
 
         <!-- Page content -->
         <div class="container-fluid mt--6">
+
             @yield('content')
 
             @include('layouts.user.partials.footer')

@@ -31,7 +31,8 @@ Route::group([
     Route::post('verify/bvn', 'DashboardController@verifybvn')->name('verify.bvn');
     Route::post('verify/bvncode', 'DashboardController@verifybvncode')->name('verify.bvncode');
     Route::get('verify/business', 'DashboardController@verifybusiness')->name('verify.business');
-
+    Route::get('set/pin', 'DashboardController@setpin')->name('setpin');
+    Route::post('set/pin', 'DashboardController@setpincode');
     Route::get('home', 'DashboardController@index')->name('home.index');
 
     // BILLS

@@ -13,6 +13,7 @@ use App\Models\SingleCharge;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Session;
 
 class DashboardController extends Controller
@@ -49,6 +50,19 @@ class DashboardController extends Controller
         $transactions = Transaction::whereUserId(auth()->id())->where('amount', '>', 0)->latest()->paginate();
         $payouts = Payout::whereUserId(auth()->id())->whereStatus('completed')->sum('amount');
         return view('user.home.index', compact('transactions', 'payouts'));
+    }
+    public function setpin(Request $request)
+    {
+        return view('user.verifyme.pin');
+    }
+    public function setpincode(Request $request)
+    {
+        $code = $request->f1.$request->f2.$request->f3.$request->f4;
+        $user = User::whereId(auth()->id())->first();
+        $user->pin = Hash::make($code);
+        $user->save();
+        return redirect()->route('user.home.index')->with('success', 'Your transaction PIN has been set successfully');
+        
     }
    
 

@@ -9,3 +9,12 @@
         </div>
     </div>
 </div>
+
+@if(Auth::user()->pin == null)
+
+<div class="col-md-12">
+    <div class="alert alert-danger" role="alert">
+        It appears you have not set your transaction PIN. Please click <a  href="{{ route('user.setpin') }}" class="btn btn-primary btn-sm">Here</a> to set transaction PIN
+    </div>
+</div>
+@endif
