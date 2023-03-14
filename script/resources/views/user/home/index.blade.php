@@ -36,10 +36,10 @@
 }
 </style>
     <div class="row">
-        @if(Auth::user()->kyc_verified_at == null)
+        @if(Auth::user()->kyc_verified_at == null || Auth::user()->bvn_verified_at == null)
         @include('user.verifyme.notification')
         @endif
-        @if(Auth::user()->kyc_verified_at != null)
+        @if(Auth::user()->kyc_verified_at != null && Auth::user()->bvn_verified_at != null)
 
 
         <div class="col-md-8">

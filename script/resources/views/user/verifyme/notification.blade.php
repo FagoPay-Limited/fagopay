@@ -345,7 +345,7 @@
                                     <div class="col-md-12">
                                       <div class="alert alert-danger" role="alert">
                                          <b> Secure Your Business</b><br>
-                                         <a href="{{route('user.verify.business')}}" class="btn btn-sm btn-primary text-white"> Verify Your Business </a>
+                                         <a href="{{ route('user.kyc-verifications.index') }}" class="btn btn-sm btn-primary text-white"> Verify Your Business </a>
                                         </div>
                                     </div>
                                   </tbody>
