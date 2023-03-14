@@ -330,8 +330,8 @@
                                 align="center"
                                 border="0"
                               >
+                              @if(Auth::user()->bvn_verified_at == null)
                                 <tbody>
-                               
                                   <div class="col-md-12">
                                     <div class="alert alert-danger" role="alert">
                                        <b> Secure Your Identity</b><br>
@@ -339,16 +339,17 @@
                                       </div>
                                     </div>
                                 </tbody>
-
+                              @endif
+                              @if(Auth::user()->kyc_verified_at == null)
                                 <tbody>
                                     <div class="col-md-12">
                                       <div class="alert alert-danger" role="alert">
                                          <b> Secure Your Business</b><br>
-                                         <a href="{{route('user.verify.business')}}" class="btn btn-sm btn-primary text-white"> Verify Your BVN </a>
+                                         <a href="{{route('user.verify.business')}}" class="btn btn-sm btn-primary text-white"> Verify Your Business </a>
                                         </div>
                                     </div>
                                   </tbody>
-
+                              @endif
                                  
                               </table>
                             </td>

@@ -41,6 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'ip_address',
         'email_verified_at',
         'last_login_at',
+        'bvn_verfied_at',
         'kyc_verified_at'
     ];
 

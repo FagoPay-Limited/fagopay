@@ -10,6 +10,7 @@ use App\Models\UserPlan;
 use App\Models\Qrpayment;
 use App\Models\Transaction;
 use App\Models\SingleCharge;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -32,6 +33,16 @@ class DashboardController extends Controller
         return redirect()->route('user.start.bvn')->with('success', 'Please enter the code sent to your phone number');
         //return view('user.verifyme.kyc', compact('bvn'));
     }
+    public function verifybvncode(Request $request)
+    {
+        $code = $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
+        $user = User::whereId(auth()->id())->first();
+        $user->bvn_verified_at = now();
+        $user->save();
+        return redirect()->route('user.home.index')->with('success', 'Your BVN has been verified successfully');
+        
+    }
+
 
     public function index()
     {
@@ -39,16 +50,7 @@ class DashboardController extends Controller
         $payouts = Payout::whereUserId(auth()->id())->whereStatus('completed')->sum('amount');
         return view('user.home.index', compact('transactions', 'payouts'));
     }
-    public function verifybvncode(Request $request)
-    {
-        $code = $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
-        $user = User::whereId(auth()->id())->first();
-        return $user;
-
-        return redirect()->route('user.start.bvn')->with('success', 'Please enter the code sent to your phone number');
-        
-    }
-
+   
 
     function transactions(Request $request) {
         $months = Transaction::whereUserId(auth()->id())

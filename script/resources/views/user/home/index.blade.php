@@ -37,14 +37,7 @@
 </style>
     <div class="row">
         @if(Auth::user()->kyc_verified_at == null)
-
-        <div class="col-md-12">
-        <div class="alert alert-danger" role="alert">
-            It appears you have not verified your KYC, please click <a  href="{{ route('user.kyc-verifications.index') }}" class="btn btn-primary btn-sm">Here</a> to verify your KYC
-        </div>
-        
         @include('user.verifyme.notification')
-    </div>
         @endif
         @if(Auth::user()->kyc_verified_at != null)
 
