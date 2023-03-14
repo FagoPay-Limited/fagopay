@@ -386,28 +386,7 @@ function handle_next_input(event){
                               border="0"
                             >
                               <tbody>
-                                @if(!session()->get('bvncode'))
-                                <form action="{{ route('user.verify.bvn') }}" method="post" class="">
-                                @csrf
-                                  <center>
-                                  <div class="title">
-                                     <p class="info">Please enter your bvn number below to verify your BVN</p>
-                                   </div>
-
-                                  <div class="alert alert-danger" role="alert">
-                                    An sms with a verification code will be send to your registered BVN number
-                                  </div>
-                                 </center>
-                                 <div class="form-group">
-                                   <input type="number" name="bvncode" class="form-control">
-                                 </div> 
                                  
-                                 <div class="form-group">
-                                  <button class="btn btn-primary" type="submit">Proceed</button>
-                                </div> 
-                                
-                                </form>
-                                @else
                                 <form action="" method="post" class="">
                                   @csrf
                                 <center>
@@ -432,7 +411,6 @@ function handle_next_input(event){
                                 
                                   </div>
                                 </form>
-                                @endif
                               </tbody>
 
                                
