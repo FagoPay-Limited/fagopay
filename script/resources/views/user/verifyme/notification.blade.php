@@ -335,7 +335,7 @@
                                   <div class="col-md-12">
                                     <div class="alert alert-danger" role="alert">
                                        <b> Secure Your Identity</b><br>
-                                       <a href="{{route('user.verify.bvn')}}" class="btn btn-sm btn-primary text-white"> Verify Your BVN </a>
+                                       <a href="{{route('user.start.bvn')}}" class="btn btn-sm btn-primary text-white"> Verify Your BVN </a>
                                       </div>
                                     </div>
                                 </tbody>

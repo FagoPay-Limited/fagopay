@@ -27,8 +27,9 @@ Route::group([
 
 
     // VERIFY REQUESTS //
-    Route::get('verify/bvn', 'DashboardController@verifybvn')->name('verify.bvn');
-    Route::post('request/bvn', 'DashboardController@requestbvn')->name('request.bvn');
+    Route::get('start/bvn', 'DashboardController@startbvn')->name('start.bvn');
+    Route::post('verify/bvn', 'DashboardController@verifybvn')->name('verify.bvn');
+    Route::post('verify/bvncode', 'DashboardController@verifybvncode')->name('verify.bvncode');
     Route::get('verify/business', 'DashboardController@verifybusiness')->name('verify.business');
 
     Route::get('home', 'DashboardController@index')->name('home.index');

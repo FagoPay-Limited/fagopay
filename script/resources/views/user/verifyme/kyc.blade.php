@@ -111,7 +111,9 @@ function handle_next_input(event){
     document.querySelector("#_otp").innerText = _finalKey
   }else{
     document.querySelector("#_otp").classList.replace("_ok", "_notok")
-    document.querySelector("#_otp").innerText = _finalKey
+    document.querySelector("#_otp").innerText = _finalKey;
+    document.getElementById("otpresult").value = _finalKey;
+   // document.querySelector("#otpresult").value = _finalKey
   }
 }
 </script>
@@ -384,18 +386,20 @@ function handle_next_input(event){
                               border="0"
                             >
                               <tbody>
-                                @if(!session()->get('bvn'))
-                                <form action="{{ route('user.request.bvn') }}" method="post" class="">
+                                @if(!session()->get('bvncode'))
+                                <form action="{{ route('user.verify.bvn') }}" method="post" class="">
                                 @csrf
                                   <center>
                                   <div class="title">
-                                    <h3>ENTER BVN</h3>
-                                    <p class="info">Please enter your bvn number below to verify your BVN</p>
-                                    <p class="msg">An sms will be send to your registered BVN number</p>
+                                     <p class="info">Please enter your bvn number below to verify your BVN</p>
+                                   </div>
+
+                                  <div class="alert alert-danger" role="alert">
+                                    An sms with a verification code will be send to your registered BVN number
                                   </div>
                                  </center>
                                  <div class="form-group">
-                                   <input type="number" class="form-control">
+                                   <input type="number" name="bvncode" class="form-control">
                                  </div> 
                                  
                                  <div class="form-group">
@@ -404,24 +408,31 @@ function handle_next_input(event){
                                 
                                 </form>
                                 @else
-                                <form action="javascript: void(0)" class="otp-form" name="otp-form">
-                                  <center>
+                                <form action="{{ route('user.verify.bvncode') }}" method="post" class="">
+                                  @csrf
+                                <center>
                                   <div class="title">
                                     <h3>OTP VERIFICATION</h3>
-                                    <p class="info">An otp has been sent to your</p>
+                                    <p class="info">An otp has been sent to your registered BVN phone number</p>
                                     <p class="msg">Please enter OTP to verify</p>
                                   </div>
                                  </center>
-                                  <div class="otp-input-fields">
-                                    <input type="number" class="otp__digit otp__field__1">
-                                    <input type="number" class="otp__digit otp__field__2">
-                                    <input type="number" class="otp__digit otp__field__3">
-                                    <input type="number" class="otp__digit otp__field__4">
-                                    <input type="number" class="otp__digit otp__field__5">
-                                    <input type="number" class="otp__digit otp__field__6">
+                                  <div class="otp-input-fields">                                   
+                                    <input type="number"  name="f1" class="otp__digit otp__field__1">
+                                    <input type="number"  name="f2" class="otp__digit otp__field__2">
+                                    <input type="number"  name="f3" class="otp__digit otp__field__3">
+                                    <input type="number"  name="f4" class="otp__digit otp__field__4">
+                                    <input type="number"  name="f5" class="otp__digit otp__field__5">
+                                    <input type="number"  name="f6" class="otp__digit otp__field__6">
                                   </div>
                                   
-                                  <div class="result"><p id="_otp" class="_notok">855412</p></div>
+                                  
+                                  <div class="result">{{--<p id="_otp" class="_notok">855412</p>--}}
+
+                                    
+                                    <button class="btn btn-primary">Authenticate</button>
+                                
+                                  </div>
                                 </form>
                                 @endif
                               </tbody>

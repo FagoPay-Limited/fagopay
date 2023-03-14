@@ -18,16 +18,19 @@ class DashboardController extends Controller
 {
 
 
-    public function verifybvn(Request $request)
+    public function startbvn()
     {
         $bvn = null; 
         return view('user.verifyme.kyc', compact('bvn'));
     }
-    public function requestbvn(Request $request)
+    public function verifybvn(Request $request)
     {
         $bvn = $request->bvn;
+        $code = rand(656573,989876);
+        session()->put('bvncode', $code);
         //$step1 = session()->get('step1');
-        return view('user.verifyme.kyc', compact('bvn'));
+        return redirect()->route('user.start.bvn')->with('success', 'Please enter the code sent to your phone number');
+        //return view('user.verifyme.kyc', compact('bvn'));
     }
 
     public function index()
@@ -36,6 +39,16 @@ class DashboardController extends Controller
         $payouts = Payout::whereUserId(auth()->id())->whereStatus('completed')->sum('amount');
         return view('user.home.index', compact('transactions', 'payouts'));
     }
+    public function verifybvncode(Request $request)
+    {
+        $code = $request->f1.$request->f2.$request->f3.$request->f4.$request->f5.$request->f6;
+        $user = User::whereId(auth()->id())->first();
+        return $user;
+
+        return redirect()->route('user.start.bvn')->with('success', 'Please enter the code sent to your phone number');
+        
+    }
+
 
     function transactions(Request $request) {
         $months = Transaction::whereUserId(auth()->id())
